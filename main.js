@@ -35,8 +35,7 @@ const template = [
         click: async () => {
           const filePaths = await dialog.showSaveDialog({})
           const file = filePaths.filePath
-          console.log(file)
-          //win.webContents.send("saveAs",{filePath:file})
+          win.webContents.send("saveAs",file)
         }
       }
     ]
