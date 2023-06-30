@@ -3,6 +3,7 @@ const { ipcRenderer } = require("electron")
 
 let openedFilePath
 const textElm=document.getElementById('text')
+const currentTextValue = textElm.value
 
 ipcRenderer.on('fileOpened', (event, {contents, filePath}) => {
     openedFilePath=filePath
@@ -11,10 +12,9 @@ ipcRenderer.on('fileOpened', (event, {contents, filePath}) => {
 })
 
 ipcRenderer.on("save", (event) => {
-    const currentTextValue = textElm.value
     fs.writeFileSync(openedFilePath, currentTextValue, "utf8")
 })
 
-ipcRenderer.on("saveAs", (event) => {
-    console.log("SAVE AS")
+ipcRenderer.on("saveAs", (event), filePath => {
+    console.log("save as")
 })
