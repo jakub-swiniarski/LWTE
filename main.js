@@ -25,7 +25,9 @@ const template = [
       {
         label: "Save file",
         accelerator: "Ctrl+S",
-        click: async () => {}
+        click: async () => {
+          win.webContents.send("saveFile")
+        }
       }
     ]
   }
