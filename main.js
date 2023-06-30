@@ -1,12 +1,12 @@
-const { app, BrowserWindow, Menu } = require('electron')
-const path = require('path')
-const { dialog } = require('electron')
-const fs = require('fs')
+const { app, BrowserWindow, Menu } = require('electron');
+const path = require('path');
+const { dialog } = require('electron');
+const fs = require('fs');
 
 //auto reload
 //require("electron-reload")(__dirname)
 
-let win
+let win;
 
 const template = [
   {
@@ -16,34 +16,34 @@ const template = [
         label: "Open file",
         accelerator: "Ctrl+O",
         click: async () => {
-          const { filePaths } = await dialog.showOpenDialog({properties: ["openFile"]})
-          const file = filePaths[0]
-          const contents = fs.readFileSync(file, "utf8")
-          win.webContents.send("fileOpened",{contents,filePath:file})
+          const { filePaths } = await dialog.showOpenDialog({properties: ["openFile"]});
+          const file = filePaths[0];
+          const contents = fs.readFileSync(file, "utf8");
+          win.webContents.send("fileOpened",{contents,filePath:file});
         }
       },
       {
         label: "Save",
         accelerator: "Ctrl+S",
         click: async () => {
-          win.webContents.send("save")
+          win.webContents.send("save");
         }
       },
       {
         label: "Save as",
         accelerator: "Ctrl+Shift+S",
         click: async () => {
-          const filePaths = await dialog.showSaveDialog({})
-          const file = filePaths.filePath
-          win.webContents.send("saveAs",file)
+          const filePaths = await dialog.showSaveDialog({});
+          const file = filePaths.filePath;
+          win.webContents.send("saveAs",file);
         }
       }
     ]
   }
-]
+];
 
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
+const menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);
 
 const createWindow = () => {
     win = new BrowserWindow({
@@ -56,24 +56,24 @@ const createWindow = () => {
       }
   })
 
-  win.loadFile('index.html')
+  win.loadFile('index.html');
 }
 
 app.whenReady().then(() => {
-  createWindow()
+  createWindow();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+      createWindow();
     }
   })
 
   //DEV TOOLS
-  //win.webContents.openDevTools()
+  //win.webContents.openDevTools();
 })
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
-      app.quit()
+      app.quit();
     }
   })
