@@ -6,10 +6,16 @@ body{
 
 #text{
     resize: none;
-    width: 98vw;
-    height: 97vh;
+    width: 95vw;
+    height: 95vh;
     background-color: rgb(39,39,39);
     color: rgb(255,255,255);
     font-size: 28px;
     outline: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
