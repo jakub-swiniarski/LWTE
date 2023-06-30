@@ -1,7 +1,25 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 const path = require('path')
 
+//auto reload
 require("electron-reload")(__dirname)
+
+const template = [
+  {
+    label: "File",
+    submenu: [
+      {
+        label: "Open file",
+        click: () => {
+          console.log("FILE OPENED")
+        }
+      }
+    ]
+  }
+]
+
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
 
 const createWindow = () => {
   const win = new BrowserWindow({
