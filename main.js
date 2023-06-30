@@ -19,8 +19,13 @@ const template = [
           const { filePaths } = await dialog.showOpenDialog({properties: ["openFile"]})
           const file = filePaths[0]
           const contents = fs.readFileSync(file, "utf8")
-          win.webContents.send('file', contents)
+          win.webContents.send("fileOpened",{contents,filePath:file})
         }
+      },
+      {
+        label: "Save file",
+        accelerator: "Ctrl+S",
+        click: async () => {}
       }
     ]
   }
