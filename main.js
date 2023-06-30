@@ -4,7 +4,7 @@ const { dialog } = require('electron')
 const fs = require('fs')
 
 //auto reload
-require("electron-reload")(__dirname)
+//require("electron-reload")(__dirname)
 
 let win
 
