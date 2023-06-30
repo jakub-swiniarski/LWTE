@@ -33,7 +33,7 @@ const template = [
         label: "Save as",
         accelerator: "Ctrl+Shift+S",
         click: async () => {
-          win.webContents.send("saveAs")
+          console.log("save as")
         }
       }
     ]
