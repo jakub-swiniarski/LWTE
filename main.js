@@ -14,6 +14,7 @@ const template = [
     submenu: [
       {
         label: "Open file",
+        accelerator: "Ctrl+O",
         click: async () => {
           const { filePaths } = await dialog.showOpenDialog({properties: ["openFile"]})
           const file = filePaths[0]
