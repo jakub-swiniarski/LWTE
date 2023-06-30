@@ -33,7 +33,10 @@ const template = [
         label: "Save as",
         accelerator: "Ctrl+Shift+S",
         click: async () => {
-          console.log("save as")
+          const filePaths = await dialog.showSaveDialog({})
+          const file = filePaths.filePath
+          console.log(file)
+          //win.webContents.send("saveAs",{filePath:file})
         }
       }
     ]

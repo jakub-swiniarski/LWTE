@@ -15,6 +15,6 @@ ipcRenderer.on("save", (event) => {
     fs.writeFileSync(openedFilePath, currentTextValue, "utf8")
 })
 
-ipcRenderer.on("saveAs", (event), filePath => {
-    console.log("save as")
+ipcRenderer.on("saveAs", (event, filePath) => {
+    //fs.writeFileSync(filePath, currentTextValue, "utf8")
 })
