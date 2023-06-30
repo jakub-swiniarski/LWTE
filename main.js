@@ -23,10 +23,17 @@ const template = [
         }
       },
       {
-        label: "Save file",
+        label: "Save",
         accelerator: "Ctrl+S",
         click: async () => {
-          win.webContents.send("saveFile")
+          win.webContents.send("save")
+        }
+      },
+      {
+        label: "Save as",
+        accelerator: "Ctrl+Shift+S",
+        click: async () => {
+          win.webContents.send("saveAs")
         }
       }
     ]
