@@ -19,5 +19,8 @@
   "homepage": "https://github.com/jakub-swiniarski/text-editor#readme",
   "devDependencies": {
     "electron": "^25.2.0"
+  },
+  "dependencies": {
+    "electron-reload": "^2.0.0-alpha.1"
   }
 }
