@@ -6,6 +6,8 @@ const fs = require('fs')
 //auto reload
 require("electron-reload")(__dirname)
 
+let win
+
 const template = [
   {
     label: "File",
@@ -16,7 +18,7 @@ const template = [
           const { filePaths } = await dialog.showOpenDialog({properties: ["openFile"]})
           const file = filePaths[0]
           const contents = fs.readFileSync(file, "utf8")
-          console.log(contents)
+          win.webContents.send('file', contents)
         }
       }
     ]
@@ -27,11 +29,13 @@ const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
 
 const createWindow = () => {
-  const win = new BrowserWindow({
+    win = new BrowserWindow({
     width: 1280,
     height: 720,
     webPreferences: {
-        preload: path.join(__dirname, 'preload.js')
+        nodeIntegration: true,
+        contextIsolation: false,
+        //preload: path.join(__dirname, 'preload.js')
       }
   })
 
@@ -46,6 +50,9 @@ app.whenReady().then(() => {
       createWindow()
     }
   })
+
+  //DEV TOOLS
+  //win.webContents.openDevTools()
 })
 
 app.on('window-all-closed', () => {

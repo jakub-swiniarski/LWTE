@@ -3,3 +3,13 @@ body{
     color:rgb(137, 255, 255);
     background-color: rgb(39, 39, 39);
 }
+
+#text{
+    resize: none;
+    width: 98vw;
+    height: 97vh;
+    background-color: rgb(39,39,39);
+    color: rgb(255,255,255);
+    font-size: 28px;
+    outline: none;
+}
