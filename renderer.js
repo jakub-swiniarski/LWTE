@@ -10,7 +10,11 @@ ipcRenderer.on('fileOpened', (event, {contents, filePath}) => {
     document.title=filePath
 })
 
-ipcRenderer.on("saveFile", (event) => {
+ipcRenderer.on("save", (event) => {
     const currentTextValue = textElm.value
     fs.writeFileSync(openedFilePath, currentTextValue, "utf8")
+})
+
+ipcRenderer.on("saveAs", (event) => {
+    console.log("SAVE AS")
 })
