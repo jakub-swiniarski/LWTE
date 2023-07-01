@@ -3,7 +3,7 @@ const path = require('path');
 const { dialog } = require('electron');
 const fs = require('fs');
 
-//auto reload
+//auto reload, use only for testing changes in files other than main.js
 //require("electron-reload")(__dirname)
 
 let win;
