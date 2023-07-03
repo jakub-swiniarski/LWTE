@@ -8,7 +8,7 @@ const fs = require('fs');
 
 let win;
 let fontsize=24;
-let fullscreen=false;
+let isFullscreen=false;
 
 const template = [
   {
@@ -56,8 +56,8 @@ const template = [
           label: "Fullscreen",
           accelerator:  "F11",
           click: async () => {
-            fullscreen=!fullscreen;
-            win.setFullScreen(fullscreen);
+            isFullscreen=!isFullscreen;
+            win.setFullScreen(isFullscreen);
           }
         },
         {
