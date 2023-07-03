@@ -38,17 +38,25 @@ const template = [
           const file = filePaths.filePath;
           win.webContents.send("saveAs",file);
         }
+      },
+      {
+        label: "Exit",
+        accelerator: "Ctrl+Q",
+        click: async () => {
+          app.quit();
+        }
       }
     ]
   },
   {
     label: "View",
     submenu: [
+        
         {
           label: "Zoom in",
           accelerator: "Ctrl+=",
           click: async () => {
-            fontsize++;
+            fontsize+=4;
             win.webContents.send("changeFontSize", fontsize);
           }
         },
@@ -56,7 +64,7 @@ const template = [
           label: "Zoom out",
           accelerator: "Ctrl+-",
           click: async () => {
-            fontsize--;
+            fontsize-=4;
             win.webContents.send("changeFontSize", fontsize);
           }
         }
