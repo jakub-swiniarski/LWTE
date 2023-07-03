@@ -8,6 +8,7 @@ const fs = require('fs');
 
 let win;
 let fontsize=24;
+let fullscreen=false;
 
 const template = [
   {
@@ -51,7 +52,14 @@ const template = [
   {
     label: "View",
     submenu: [
-        
+        {
+          label: "Fullscreen",
+          accelerator:  "F11",
+          click: async () => {
+            fullscreen=!fullscreen;
+            win.setFullScreen(fullscreen);
+          }
+        },
         {
           label: "Zoom in",
           accelerator: "Ctrl+=",
