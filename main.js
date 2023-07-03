@@ -7,6 +7,7 @@ const fs = require('fs');
 //require("electron-reload")(__dirname)
 
 let win;
+let fontsize=24;
 
 const template = [
   {
@@ -38,6 +39,27 @@ const template = [
           win.webContents.send("saveAs",file);
         }
       }
+    ]
+  },
+  {
+    label: "View",
+    submenu: [
+        {
+          label: "Zoom in",
+          accelerator: "Ctrl+=",
+          click: async () => {
+            fontsize++;
+            win.webContents.send("changeFontSize", fontsize);
+          }
+        },
+        {
+          label: "Zoom out",
+          accelerator: "Ctrl+-",
+          click: async () => {
+            fontsize--;
+            win.webContents.send("changeFontSize", fontsize);
+          }
+        }
     ]
   }
 ];
