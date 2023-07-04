@@ -24,6 +24,7 @@ const template = [
           win.webContents.send("fileOpened",{contents,filePath:file});
         }
       },
+      { type: 'separator' },
       {
         label: "Save",
         accelerator: "Ctrl+S",
@@ -40,6 +41,7 @@ const template = [
           win.webContents.send("saveAs",file);
         }
       },
+      { type: 'separator' },
       {
         label: "Exit",
         accelerator: "Ctrl+Q",
@@ -60,6 +62,7 @@ const template = [
             win.setFullScreen(isFullscreen);
           }
         },
+        { type: 'separator' },
         {
           label: "Zoom in",
           accelerator: "Ctrl+=",
@@ -76,6 +79,7 @@ const template = [
             win.webContents.send("changeFontSize", fontsize);
           }
         },
+        { type: 'separator' },
         {
           label: "Themes",
           submenu: [
