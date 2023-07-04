@@ -25,3 +25,9 @@ ipcRenderer.on("saveAs", (event, file) => {
 ipcRenderer.on("changeFontSize", (event, fontsize) => {
     textElm.style.fontSize=fontsize+"px";
 });
+
+ipcRenderer.on("changeTheme", (event, fg, bg) => {
+    textElm.style.backgroundColor=bg;
+    textElm.style.color=fg;
+    document.body.style.backgroundColor=bg;
+})

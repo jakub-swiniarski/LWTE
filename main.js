@@ -82,19 +82,19 @@ const template = [
             {
               label: "Dark",
               click: async () => {
-                win.webContents.send("changeTheme"); //fg,bg
+                win.webContents.send("changeTheme", "rgb(255,255,255)", "rgb(39,39,39)"); //fg,bg
               }
             },
             {
               label: "Light",
               click: async () => {
-                win.webContents.send("changeTheme")
+                win.webContents.send("changeTheme", "rgb(0,0,0)", "rgb(255,255,255)");
               }
             },
             {
               label: "Hacker",
               click: async () => {
-                win.webContents.send("changeTheme")
+                win.webContents.send("changeTheme", "rgb(0,255,0)", "rgb(0,0,0)");
               }
             }           
           ]
