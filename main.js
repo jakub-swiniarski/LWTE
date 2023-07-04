@@ -75,7 +75,30 @@ const template = [
             fontsize-=4;
             win.webContents.send("changeFontSize", fontsize);
           }
-        }
+        },
+        {
+          label: "Themes",
+          submenu: [
+            {
+              label: "Dark",
+              click: async () => {
+                win.webContents.send("changeTheme"); //fg,bg
+              }
+            },
+            {
+              label: "Light",
+              click: async () => {
+                win.webContents.send("changeTheme")
+              }
+            },
+            {
+              label: "Hacker",
+              click: async () => {
+                win.webContents.send("changeTheme")
+              }
+            }           
+          ]
+        },
     ]
   }
 ];
