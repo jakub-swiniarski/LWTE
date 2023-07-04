@@ -14,7 +14,11 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options:{
+          icon: "icons/icon.png"
+        }
+      },
     }
   ],
   plugins: [
