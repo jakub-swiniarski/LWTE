@@ -4,7 +4,7 @@ const { dialog } = require('electron');
 const fs = require('fs');
 
 //auto reload, use only for testing changes in files other than main.js
-//require("electron-reload")(__dirname)
+//require("electron-reload")(__dirname);
 
 let win;
 let fontsize=24;
