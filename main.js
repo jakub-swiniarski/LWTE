@@ -127,8 +127,15 @@ const createWindow = () => {
     win.webContents.send("loadSettings");
     //console.log(app.getPath('userData'));
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //send userdata path to renderer and then use it to write settings.json
-    //and themes.json in that folder
+    //send userdata path to renderer and create settings.json and
+    //themes.json if they don't exist (fs.existsSync(path))
+    //
+    //if they do exist convert them to objects in main and if u need them
+    //in the renderer, just send them using webcontents
+    //
+    //for writing to settings.json, send path.join(userdata, 'settings.json')
+    //to the renderer when changing themes
+    //
     //users will be able to customize themes by editing the
     //themes.json file manually
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
