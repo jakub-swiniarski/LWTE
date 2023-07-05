@@ -3,6 +3,9 @@ const path = require('path');
 const { dialog } = require('electron');
 const fs = require('fs');
 
+import settings from './settings.json';
+import themes from './themes.json';
+
 //auto reload, use only for testing changes in files other than main.js
 //require("electron-reload")(__dirname);
 
@@ -131,6 +134,7 @@ app.whenReady().then(() => {
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
+      //load settings.json
     }
   })
 
