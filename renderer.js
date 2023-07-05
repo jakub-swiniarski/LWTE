@@ -5,7 +5,6 @@ import themes from './themes.json' assert {type: 'json'};
 
 let openedFilePath;
 const textElm=document.getElementById('text');
-//const currentTextValue = textElm.value;
 
 ipcRenderer.on('fileOpened', (event, {contents, filePath}) => {
     openedFilePath=filePath;
