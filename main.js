@@ -130,10 +130,10 @@ const createWindow = () => {
     //send userdata path to renderer and create settings.json and
     //themes.json if they don't exist (fs.existsSync(path))
     //
-    //if they do exist convert them to objects in main and if u need them
+    //if they do exist, convert them to objects in main and if u need them
     //in the renderer, just send them using webcontents
     //
-    //for writing to settings.json, send path.join(userdata, 'settings.json')
+    //if u need to write to settings.json, send path.join(userdata, 'settings.json')
     //to the renderer when changing themes
     //
     //users will be able to customize themes by editing the
