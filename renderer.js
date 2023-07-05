@@ -1,6 +1,8 @@
 const fs = require("fs");
 const { ipcRenderer } = require("electron");
 
+import themes from './themes.json' assert {type: 'json'};
+
 let openedFilePath;
 const textElm=document.getElementById('text');
 //const currentTextValue = textElm.value;
@@ -26,8 +28,8 @@ ipcRenderer.on("changeFontSize", (event, fontsize) => {
     textElm.style.fontSize=fontsize+"px";
 });
 
-ipcRenderer.on("changeTheme", (event, fg, bg) => {
-    textElm.style.backgroundColor=bg;
-    textElm.style.color=fg;
-    document.body.style.backgroundColor=bg;
+ipcRenderer.on("changeTheme", (event, x) => {
+    textElm.style.backgroundColor=themes[x].bg;
+    textElm.style.color=themes[x].fg;
+    document.body.style.backgroundColor=themes[x].bg;
 })
