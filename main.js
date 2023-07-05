@@ -3,9 +3,6 @@ const path = require('path');
 const { dialog } = require('electron');
 const fs = require('fs');
 
-import settings from './settings.json';
-import themes from './themes.json';
-
 //auto reload, use only for testing changes in files other than main.js
 //require("electron-reload")(__dirname);
 
@@ -89,19 +86,19 @@ const template = [
             {
               label: "Dark",
               click: async () => {
-                win.webContents.send("changeTheme", "rgb(255,255,255)", "rgb(39,39,39)"); //fg,bg
+                win.webContents.send("changeTheme", 0); //fg,bg
               }
             },
             {
               label: "Light",
               click: async () => {
-                win.webContents.send("changeTheme", "rgb(0,0,0)", "rgb(255,255,255)");
+                win.webContents.send("changeTheme", 1);
               }
             },
             {
               label: "Hacker",
               click: async () => {
-                win.webContents.send("changeTheme", "rgb(0,255,0)", "rgb(0,0,0)");
+                win.webContents.send("changeTheme", 2);
               }
             }           
           ]
@@ -139,7 +136,7 @@ app.whenReady().then(() => {
   })
 
   //DEV TOOLS
-  //win.webContents.openDevTools();
+  win.webContents.openDevTools();
 })
 
 app.on('window-all-closed', () => {
