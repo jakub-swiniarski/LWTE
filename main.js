@@ -123,6 +123,9 @@ const createWindow = () => {
   })
 
   win.loadFile('index.html');
+  win.webContents.on('did-finish-load', function() {
+    win.webContents.send("loadSettings");
+  });
 }
 
 app.whenReady().then(() => {
@@ -131,12 +134,11 @@ app.whenReady().then(() => {
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
-      win.webContents.send("loadSettings");
     }
   })
 
   //DEV TOOLS
-  win.webContents.openDevTools();
+  //win.webContents.openDevTools();
 })
 
 app.on('window-all-closed', () => {
