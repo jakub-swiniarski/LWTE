@@ -1,4 +1,4 @@
-# LWTE <img src="https://github.com/jakub-swiniarski/LWTE/assets/77209709/d3f3b5ab-0a4a-4efd-98e9-11f442af18c6" width=48 height=48>
+# LWTE <img src="https://github.com/jakub-swiniarski/LWTE/assets/77209709/c0dca519-6c62-44cd-ac45-e13aefdea882" width=48 height=48>
 ## LightWeight Text Editor
 
 ### How to install?
