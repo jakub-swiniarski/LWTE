@@ -131,7 +131,7 @@ app.whenReady().then(() => {
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
-      //load settings.json
+      win.webContents.send("loadSettings");
     }
   })
 
