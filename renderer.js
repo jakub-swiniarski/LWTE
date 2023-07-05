@@ -1,8 +1,8 @@
 const fs = require("fs");
 const { ipcRenderer } = require("electron");
 
-var themes = JSON.parse(fs.readFileSync("./themes.json"));
-var settings = JSON.parse(fs.readFileSync("./settings.json"));
+let themes = JSON.parse(fs.readFileSync("./themes.json"));
+let settings = JSON.parse(fs.readFileSync("./settings.json"));
 
 let openedFilePath;
 const textElm=document.getElementById('text');
@@ -12,6 +12,10 @@ function loadTheme(x){
     textElm.style.color=themes[x].fg;
     document.body.style.backgroundColor=themes[x].bg;
 }
+
+ipcRenderer.on("loadSettings", (event) => {
+    loadTheme(settings.theme);
+})
 
 ipcRenderer.on('fileOpened', (event, {contents, filePath}) => {
     openedFilePath=filePath;
@@ -38,8 +42,4 @@ ipcRenderer.on("changeTheme", (event, x) => {
     settings.theme=x;
     fs.writeFileSync("./settings.json",JSON.stringify(settings));
     loadTheme(x);
-})
-
-ipcRenderer.on("loadSettings", (event) => {
-
 })
