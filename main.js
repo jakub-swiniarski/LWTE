@@ -125,6 +125,13 @@ const createWindow = () => {
   win.loadFile('index.html');
   win.webContents.on('did-finish-load', function() {
     win.webContents.send("loadSettings");
+    //console.log(app.getPath('userData'));
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //send userdata path to renderer and then use it to write settings.json
+    //and themes.json in that folder
+    //users will be able to customize themes by editing the
+    //themes.json file manually
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   });
 }
 
