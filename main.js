@@ -136,6 +136,11 @@ const createWindow = () => {
     //if u need to write to settings.json, send path.join(userdata, 'settings.json')
     //to the renderer when changing themes
     //
+    //remove settings.json and themes.json from this repo
+    //they can't be opened after build anyway
+    //so just paste the content into fs write
+    //as a string when creating new jsons
+    //
     //users will be able to customize themes by editing the
     //themes.json file manually
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
