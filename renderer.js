@@ -15,7 +15,7 @@ function loadTheme(x){
 
 ipcRenderer.on("loadSettings", (event) => {
     loadTheme(settings.theme);
-})
+});
 
 ipcRenderer.on('fileOpened', (event, {contents, filePath}) => {
     openedFilePath=filePath;
