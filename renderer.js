@@ -36,6 +36,7 @@ ipcRenderer.on("changeFontSize", (event, fontsize) => {
 
 ipcRenderer.on("changeTheme", (event, x) => {
     settings.theme=x;
+    fs.writeFileSync("./settings.json",JSON.stringify(settings));
     loadTheme(x);
 })
 
