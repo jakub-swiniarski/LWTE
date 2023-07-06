@@ -13,6 +13,9 @@ let isFullscreen=false;
 let themesPath = path.join(app.getPath('userData'),'themes.json');
 let settingsPath = path.join(app.getPath('userData'),'settings.json');
 
+let themes;
+let settings;
+
 const template = [
   {
     label: "File",
@@ -89,7 +92,7 @@ const template = [
             {
               label: "Dark",
               click: async () => {
-                win.webContents.send("changeTheme", 0); //fg,bg
+                win.webContents.send("changeTheme", 0);
               }
             },
             {
@@ -165,10 +168,12 @@ const createWindow = () => {
         }
     ]));
     }
+    themes = JSON.parse(fs.readFileSync(themesPath));
     
     if(!fs.existsSync(settingsPath)){
       fs.writeFileSync(settingsPath, JSON.stringify({"theme":0}))
     }
+    settings = JSON.parse(fs.readFileSync(settingsPath));
   });
 }
 
