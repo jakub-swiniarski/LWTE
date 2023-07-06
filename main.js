@@ -144,6 +144,13 @@ const createWindow = () => {
     //users will be able to customize themes by editing the
     //themes.json file manually
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    if(!fs.existsSync(path.join(app.getPath('userData'),'themes.json'))){
+      console.log("no themes");
+    }
+    
+    if(!fs.existsSync(path.join(app.getPath('userData'),'settings.json'))){
+      console.log("no settings");
+    }
   });
 }
 
