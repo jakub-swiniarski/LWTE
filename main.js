@@ -10,7 +10,8 @@ let win;
 let fontsize=24;
 let isFullscreen=false;
 
-let themesPath = path.join(app.getPath('userData'),'themes.json')
+let themesPath = path.join(app.getPath('userData'),'themes.json');
+let settingsPath = path.join(app.getPath('userData'),'settings.json');
 
 const template = [
   {
@@ -165,8 +166,8 @@ const createWindow = () => {
     ]));
     }
     
-    if(!fs.existsSync(path.join(app.getPath('userData'),'settings.json'))){
-      console.log("no settings");
+    if(!fs.existsSync(settingsPath)){
+      fs.writeFileSync(settingsPath, JSON.stringify({"theme":0}))
     }
   });
 }
