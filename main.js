@@ -10,6 +10,8 @@ let win;
 let fontsize=24;
 let isFullscreen=false;
 
+let themesPath = path.join(app.getPath('userData'),'themes.json')
+
 const template = [
   {
     label: "File",
@@ -144,8 +146,23 @@ const createWindow = () => {
     //users will be able to customize themes by editing the
     //themes.json file manually
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    if(!fs.existsSync(path.join(app.getPath('userData'),'themes.json'))){
-      console.log("no themes");
+    if(!fs.existsSync(themesPath)){
+      fs.writeFileSync(themesPath,JSON.stringify([
+        {
+            "fg": "rgb(255,255,255)",
+            "bg": "rgb(39,39,39)"
+        },
+    
+        {
+            "fg": "rgb(0,0,0)",
+            "bg": "rgb(255,255,255)"
+        },
+    
+        {
+            "fg": "rgb(0,255,0)",
+            "bg": "rgb(0,0,0)"
+        }
+    ]));
     }
     
     if(!fs.existsSync(path.join(app.getPath('userData'),'settings.json'))){
