@@ -11,6 +11,7 @@ function loadTheme(x, themes){
 }
 
 ipcRenderer.on("loadSettings", (event, settings, themes) => {
+    textElm.style.fontSize=settings.fontSize+"px";
     loadTheme(settings.theme, themes);
 });
 
@@ -32,10 +33,7 @@ ipcRenderer.on("saveAs", (event, file) => {
 });
 
 ipcRenderer.on("changeFontSize", (event, fontsize) => {
-    textElm.style.fontSize=fontsize+"px";
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //SAVE FONT SIZE TO SETTINGS
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!
+    textElm.style.fontSize=fontsize+"px"; 
 });
 
 ipcRenderer.on("changeTheme", (event, x, settingsPath, settings, themes) => {
