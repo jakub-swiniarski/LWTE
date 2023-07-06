@@ -5,6 +5,7 @@ const fs = require('fs');
 
 //auto reload, use only for testing changes in files other than main.js
 //require("electron-reload")(__dirname);
+//if u need to use this, add this to package.json dependencies: "electron-reload": "^2.0.0-alpha.1"
 
 let win;
 let isFullscreen=false;
@@ -131,25 +132,6 @@ const createWindow = () => {
 
   win.loadFile('index.html');
   win.webContents.on('did-finish-load', function() {
-    //console.log(app.getPath('userData'));
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //send userdata path to renderer and create settings.json and
-    //themes.json if they don't exist (fs.existsSync(path))
-    //
-    //if they do exist, convert them to objects in main and if u need them
-    //in the renderer, just send them using webcontents
-    //
-    //if u need to write to settings.json, send path.join(userdata, 'settings.json')
-    //to the renderer when changing themes
-    //
-    //remove settings.json and themes.json from this repo
-    //they can't be opened after build anyway
-    //so just paste the content into fs write
-    //as a string when creating new jsons
-    //
-    //users will be able to customize themes by editing the
-    //themes.json file manually
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if(!fs.existsSync(themesPath)){
       fs.writeFileSync(themesPath,JSON.stringify([
         {
