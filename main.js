@@ -92,19 +92,19 @@ const template = [
             {
               label: "Dark",
               click: async () => {
-                win.webContents.send("changeTheme", 0);
+                win.webContents.send("changeTheme", 0, settingsPath, settings, themes);
               }
             },
             {
               label: "Light",
               click: async () => {
-                win.webContents.send("changeTheme", 1);
+                win.webContents.send("changeTheme", 1, settingsPath, settings, themes);
               }
             },
             {
               label: "Hacker",
               click: async () => {
-                win.webContents.send("changeTheme", 2);
+                win.webContents.send("changeTheme", 2, settingsPath, settings, themes);
               }
             }           
           ]
@@ -130,7 +130,6 @@ const createWindow = () => {
 
   win.loadFile('index.html');
   win.webContents.on('did-finish-load', function() {
-    win.webContents.send("loadSettings");
     //console.log(app.getPath('userData'));
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //send userdata path to renderer and create settings.json and
@@ -174,6 +173,8 @@ const createWindow = () => {
       fs.writeFileSync(settingsPath, JSON.stringify({"theme":0}))
     }
     settings = JSON.parse(fs.readFileSync(settingsPath));
+
+    win.webContents.send("loadSettings", settings, themes);
   });
 }
 
