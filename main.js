@@ -189,7 +189,7 @@ app.whenReady().then(() => {
   })
 
   //DEV TOOLS
-  win.webContents.openDevTools();
+  //win.webContents.openDevTools();
 })
 
 app.on('window-all-closed', () => {
