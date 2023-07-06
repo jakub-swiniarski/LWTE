@@ -7,7 +7,6 @@ const fs = require('fs');
 //require("electron-reload")(__dirname);
 
 let win;
-let fontsize=24;
 let isFullscreen=false;
 
 let themesPath = path.join(app.getPath('userData'),'themes.json');
@@ -73,16 +72,18 @@ const template = [
           label: "Zoom in",
           accelerator: "Ctrl+=",
           click: async () => {
-            fontsize+=4;
-            win.webContents.send("changeFontSize", fontsize);
+            settings.fontSize+=4
+            fs.writeFileSync(settingsPath, JSON.stringify(settings));
+            win.webContents.send("changeFontSize", settings.fontSize);
           }
         },
         {
           label: "Zoom out",
           accelerator: "Ctrl+-",
           click: async () => {
-            fontsize-=4;
-            win.webContents.send("changeFontSize", fontsize);
+            settings.fontSize-=4;
+            fs.writeFileSync(settingsPath, JSON.stringify(settings));
+            win.webContents.send("changeFontSize", settings.fontSize);
           }
         },
         { type: 'separator' },
@@ -170,7 +171,7 @@ const createWindow = () => {
     themes = JSON.parse(fs.readFileSync(themesPath));
     
     if(!fs.existsSync(settingsPath)){
-      fs.writeFileSync(settingsPath, JSON.stringify({"theme":0}))
+      fs.writeFileSync(settingsPath, JSON.stringify({"theme":0, "fontSize": 24}))
     }
     settings = JSON.parse(fs.readFileSync(settingsPath));
 
@@ -188,7 +189,7 @@ app.whenReady().then(() => {
   })
 
   //DEV TOOLS
-  //win.webContents.openDevTools();
+  win.webContents.openDevTools();
 })
 
 app.on('window-all-closed', () => {
