@@ -175,7 +175,8 @@ app.whenReady().then(() => {
 })
 
 app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
+    //uncomment before deploying for mac
+    //if (process.platform !== 'darwin') {
       app.quit();
-    }
+    //}
   })
